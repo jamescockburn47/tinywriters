@@ -20,6 +20,7 @@ function shuffle(arr) {
 export default function BuildSentence({ active, onSelect, award }) {
   const { current, next, completed, markCompleted, total } = usePool(data)
   const [shuffledWords, setShuffledWords] = useState([])
+  const [targetWords, setTargetWords] = useState([])
   const [placed, setPlaced] = useState([])
   const [attempts, setAttempts] = useState(0)
   const [feedback, setFeedback] = useState(null)
@@ -31,11 +32,17 @@ export default function BuildSentence({ active, onSelect, award }) {
 
   useEffect(() => {
     if (current) {
-      const allWords = [...current.words]
-      if (current.alternatives) {
-        current.alternatives.forEach(alt => allWords.push(...alt))
+      // Pick one variant: either the base ending or a random alternative
+      const words = [...current.words]
+      if (current.alternatives && current.alternatives.length > 0) {
+        // All options for the last position: the base last word + each alternative
+        const lastWord = words[words.length - 1]
+        const allEndings = [lastWord, ...current.alternatives.map(alt => alt[0])]
+        const chosen = allEndings[Math.floor(Math.random() * allEndings.length)]
+        words[words.length - 1] = chosen
       }
-      setShuffledWords(shuffle(allWords))
+      setTargetWords(words)
+      setShuffledWords(shuffle(words))
       setPlaced([])
       setAttempts(0)
       setFeedback(null)
@@ -44,37 +51,15 @@ export default function BuildSentence({ active, onSelect, award }) {
     }
   }, [current])
 
-  const isWordValid = useCallback((wordObj, position) => {
-    if (!current) return false
-    if (position < current.words.length) {
-      return wordObj.word === current.words[position].word && wordObj.type === current.words[position].type
-    }
-    return false
-  }, [current])
-
-  const isAlternativeStart = useCallback((wordObj, position) => {
-    if (!current?.alternatives || position < current.words.length - 1) return false
-    const altStartPos = current.words.length - 1
-    if (position < altStartPos) return false
-    const altIdx = position - altStartPos
-    return current.alternatives.some(alt => {
-      if (altIdx < alt.length) {
-        return alt[altIdx].word === wordObj.word && alt[altIdx].type === wordObj.type
-      }
-      return false
-    })
-  }, [current])
-
   const handleChipClick = (wordObj, idx) => {
     if (done || placed.includes(idx)) return
 
     const nextPos = placed.length
+    const expected = targetWords[nextPos]
     const newAttempts = attempts + 1
     setAttempts(newAttempts)
 
-    const isCorrect = isWordValid(wordObj, nextPos) || isAlternativeStart(wordObj, nextPos)
-
-    if (isCorrect) {
+    if (wordObj.word === expected.word && wordObj.type === expected.type) {
       const newPlaced = [...placed, idx]
       setPlaced(newPlaced)
       setWrongIdx(null)
@@ -90,10 +75,7 @@ export default function BuildSentence({ active, onSelect, award }) {
         setFeedback(null)
       }
 
-      const requiredLength = current.words.length
-      const hasAltEnding = current.alternatives && nextPos >= requiredLength - 2
-
-      if (newPlaced.length >= requiredLength) {
+      if (newPlaced.length >= targetWords.length) {
         setFeedback({ message: getSuccessMessage(), type: 'success' })
         setDone(true)
         markCompleted()
