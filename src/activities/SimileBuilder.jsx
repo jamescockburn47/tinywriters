@@ -76,12 +76,12 @@ export default function SimileBuilder({ active, onSelect, award }) {
       onClick={onSelect}
     >
       {current && (
-        <div className="space-y-4">
-          <div className="bg-amber-50 rounded-xl p-4 text-xl font-bold text-amber-900 border-2 border-amber-200 text-center">
+        <div className="space-y-3 sm:space-y-4">
+          <div className="bg-amber-50 rounded-xl p-3 sm:p-4 text-base sm:text-xl font-bold text-amber-900 border-2 border-amber-200 text-center">
             {current.stem} <span className="text-purple-500">___</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
             {options.map((opt, i) => (
               <motion.button
                 key={opt}
@@ -90,7 +90,7 @@ export default function SimileBuilder({ active, onSelect, award }) {
                 onClick={() => handlePick(opt)}
                 disabled={done || disabled[opt]}
                 className={`
-                  p-3 rounded-xl font-bold text-base border-2 transition-all cursor-pointer
+                  p-2 sm:p-3 rounded-xl font-bold text-sm sm:text-base border-2 transition-all cursor-pointer
                   ${done && opt === current.answer ? 'bg-emerald-500 text-white border-emerald-500' : ''}
                   ${disabled[opt] ? 'bg-red-50 border-red-300 text-red-400 opacity-50 cursor-not-allowed' : ''}
                   ${!done && !disabled[opt] ? 'bg-white border-gray-200 hover:border-purple-400 hover:shadow-md' : ''}

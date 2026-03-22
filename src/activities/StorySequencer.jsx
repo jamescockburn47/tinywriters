@@ -82,15 +82,15 @@ export default function StorySequencer({ active, onSelect, award }) {
       onClick={onSelect}
     >
       {current && (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* Slots */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
             {SLOT_LABELS.map((label, i) => (
               <div
                 key={label}
-                className={`rounded-xl p-3 min-h-[80px] border-2 border-dashed ${SLOT_COLORS[i]} flex flex-col`}
+                className={`rounded-xl p-2 sm:p-3 min-h-[56px] sm:min-h-[80px] border-2 border-dashed ${SLOT_COLORS[i]} flex flex-col`}
               >
-                <span className={`text-xs font-extrabold uppercase ${SLOT_TEXT[i]} mb-1`}>
+                <span className={`text-[10px] sm:text-xs font-extrabold uppercase ${SLOT_TEXT[i]} mb-1`}>
                   {label}
                 </span>
                 <AnimatePresence>
@@ -98,7 +98,7 @@ export default function StorySequencer({ active, onSelect, award }) {
                     <motion.p
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className={`text-sm font-medium ${SLOT_TEXT[i]}`}
+                      className={`text-xs sm:text-sm font-medium ${SLOT_TEXT[i]}`}
                     >
                       {placed[i].text}
                     </motion.p>
@@ -109,7 +109,7 @@ export default function StorySequencer({ active, onSelect, award }) {
           </div>
 
           {/* Event bank */}
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             {shuffled.map((event, idx) => {
               const isPlaced = placed.some(p => p.idx === idx)
               const isWrong = wrongIdx === idx
@@ -121,7 +121,7 @@ export default function StorySequencer({ active, onSelect, award }) {
                   onClick={() => handlePick(event, idx)}
                   disabled={isPlaced || done}
                   className={`
-                    w-full p-3 rounded-xl font-medium text-sm text-left border-2 transition-all cursor-pointer
+                    w-full p-2.5 sm:p-3 rounded-xl font-medium text-xs sm:text-sm text-left border-2 transition-all cursor-pointer
                     ${isPlaced ? 'opacity-30 cursor-not-allowed bg-gray-100 border-gray-200' : ''}
                     ${isWrong ? 'border-red-500 bg-red-50 animate-shake' : ''}
                     ${!isPlaced && !isWrong ? 'bg-white border-gray-200 hover:border-teal-400 hover:shadow-md' : ''}

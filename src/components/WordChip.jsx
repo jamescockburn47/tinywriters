@@ -33,7 +33,7 @@ export default function WordChip({ word, type, placed, wrong, showType, onClick,
         animate={{ scale: 1, opacity: 1 }}
         className="inline-flex flex-col items-center"
       >
-        <span className={`px-3 py-1.5 rounded-lg font-bold text-white ${colors.label} text-base`}>
+        <span className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg font-bold text-white ${colors.label} text-sm sm:text-base`}>
           {word}
         </span>
         {showType && (
@@ -54,7 +54,7 @@ export default function WordChip({ word, type, placed, wrong, showType, onClick,
       whileHover={!disabled ? { scale: 1.05 } : {}}
       whileTap={!disabled ? { scale: 0.95 } : {}}
       className={`
-        px-4 py-2 rounded-xl font-bold text-base border-2 transition-all cursor-pointer
+        px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl font-bold text-sm sm:text-base border-2 transition-all cursor-pointer
         ${wrong ? 'border-red-500 bg-red-50 animate-shake' : `${colors.border} ${colors.bg} hover:shadow-md`}
         ${disabled ? 'opacity-30 cursor-not-allowed' : ''}
       `}

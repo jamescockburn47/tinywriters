@@ -96,13 +96,13 @@ export default function AdjectiveOrder({ active, onSelect, award }) {
       onClick={onSelect}
     >
       {current && (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* Difficulty badge */}
-          <div className="flex justify-between items-center">
+          <div className="flex flex-wrap justify-between items-center gap-2">
             <span className={`text-xs font-bold ${difficultyColor} bg-white px-2 py-1 rounded-full`}>
               {difficultyLabel}
             </span>
-            <div className="flex gap-1">
+            <div className="flex flex-wrap gap-1">
               {Object.entries(CATEGORIES).map(([key, cat]) => {
                 const isUsed = current.adjectives.some(a => a.category === key)
                 if (!isUsed) return null
@@ -120,9 +120,9 @@ export default function AdjectiveOrder({ active, onSelect, award }) {
           </div>
 
           {/* Build area */}
-          <div className="bg-indigo-50 rounded-xl p-4 min-h-[56px] border-2 border-dashed border-indigo-300 flex items-center gap-2 flex-wrap">
+          <div className="bg-indigo-50 rounded-xl p-3 sm:p-4 min-h-[48px] sm:min-h-[56px] border-2 border-dashed border-indigo-300 flex items-center gap-1.5 sm:gap-2 flex-wrap">
             {placed.length === 0 && (
-              <span className="text-indigo-300 italic">Click adjectives in the right order...</span>
+              <span className="text-indigo-300 italic text-sm sm:text-base">Click adjectives in the right order...</span>
             )}
             <AnimatePresence>
               {placed.map((adj, i) => {
@@ -135,7 +135,7 @@ export default function AdjectiveOrder({ active, onSelect, award }) {
                     className="inline-flex flex-col items-center"
                   >
                     <span
-                      className="px-3 py-1.5 rounded-lg font-bold text-white text-base"
+                      className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg font-bold text-white text-sm sm:text-base"
                       style={{ backgroundColor: cat?.color || '#888' }}
                     >
                       {adj.word}
@@ -150,14 +150,14 @@ export default function AdjectiveOrder({ active, onSelect, award }) {
 
             {/* Noun at the end */}
             {placed.length > 0 && (
-              <span className="px-3 py-1.5 rounded-lg font-bold text-gray-700 bg-gray-200 text-base">
+              <span className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg font-bold text-gray-700 bg-gray-200 text-sm sm:text-base">
                 {current.noun}
               </span>
             )}
           </div>
 
           {/* Adjective bank */}
-          <div className="flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center">
             {shuffled.map((adj, idx) => {
               const isPlaced = placed.some(p => p.idx === idx)
               const isWrong = wrongIdx === idx
@@ -171,7 +171,7 @@ export default function AdjectiveOrder({ active, onSelect, award }) {
                   onClick={() => handlePick(adj, idx)}
                   disabled={isPlaced || done}
                   className={`
-                    px-4 py-2 rounded-xl font-bold text-base border-2 transition-all cursor-pointer
+                    px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl font-bold text-sm sm:text-base border-2 transition-all cursor-pointer
                     ${isPlaced ? 'opacity-30 cursor-not-allowed bg-gray-100 border-gray-200' : ''}
                     ${isWrong ? 'border-red-500 bg-red-50 animate-shake' : ''}
                     ${!isPlaced && !isWrong ? 'bg-white hover:shadow-md' : ''}

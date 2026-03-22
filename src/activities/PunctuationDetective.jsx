@@ -54,12 +54,12 @@ export default function PunctuationDetective({ active, onSelect, award }) {
       onClick={onSelect}
     >
       {current && (
-        <div className="space-y-4">
-          <div className="bg-sky-50 rounded-xl p-4 text-xl font-bold text-sky-900 border-2 border-sky-200 text-center">
-            {current.sentence}<span className="text-sky-400 text-2xl ml-1">_</span>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="bg-sky-50 rounded-xl p-3 sm:p-4 text-base sm:text-xl font-bold text-sky-900 border-2 border-sky-200 text-center">
+            {current.sentence}<span className="text-sky-400 text-xl sm:text-2xl ml-1">_</span>
           </div>
 
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-3 sm:gap-4">
             {MARKS.map(mark => (
               <motion.button
                 key={mark}
@@ -68,7 +68,7 @@ export default function PunctuationDetective({ active, onSelect, award }) {
                 onClick={() => handlePick(mark)}
                 disabled={done || disabled[mark]}
                 className={`
-                  w-16 h-16 rounded-2xl text-3xl font-extrabold border-3 transition-all cursor-pointer
+                  w-14 h-14 sm:w-16 sm:h-16 rounded-2xl text-2xl sm:text-3xl font-extrabold border-3 transition-all cursor-pointer
                   ${done && mark === current.answer ? 'bg-emerald-500 text-white border-emerald-500 scale-110' : ''}
                   ${disabled[mark] ? 'bg-red-50 border-red-200 text-red-300 opacity-50 cursor-not-allowed' : ''}
                   ${!done && !disabled[mark] ? 'bg-white border-gray-200 hover:border-sky-400 hover:shadow-lg' : ''}

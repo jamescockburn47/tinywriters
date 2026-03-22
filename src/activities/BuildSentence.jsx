@@ -100,11 +100,11 @@ export default function BuildSentence({ active, onSelect, award }) {
       onClick={onSelect}
     >
       {current && (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* Build area - placed words */}
-          <div className="bg-blue-50 rounded-xl p-4 min-h-[64px] border-2 border-dashed border-blue-300 flex flex-wrap gap-2 items-center">
+          <div className="bg-blue-50 rounded-xl p-3 sm:p-4 min-h-[52px] sm:min-h-[64px] border-2 border-dashed border-blue-300 flex flex-wrap gap-1.5 sm:gap-2 items-center">
             {placed.length === 0 && (
-              <span className="text-blue-300 italic">Click the words below in the right order...</span>
+              <span className="text-blue-300 italic text-sm sm:text-base">Click the words below in the right order...</span>
             )}
             <AnimatePresence>
               {placed.map((wordIdx) => {
@@ -130,7 +130,7 @@ export default function BuildSentence({ active, onSelect, award }) {
           </div>
 
           {/* Word bank */}
-          <div className="flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center">
             {shuffledWords.map((w, idx) => (
               <WordChip
                 key={`bank-${idx}`}

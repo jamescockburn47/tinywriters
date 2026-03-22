@@ -2,9 +2,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ScoreBar({ score, floatingStars }) {
   return (
-    <div className="flex items-center gap-4 text-sm font-bold">
-      <div className="relative flex items-center gap-1 bg-white/80 px-3 py-1.5 rounded-full shadow-sm">
-        <span className="text-lg">⭐</span>
+    <div className="flex items-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-bold">
+      <div className="relative flex items-center gap-1 bg-white/80 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-sm">
+        <span className="text-sm sm:text-lg">⭐</span>
         <span className="text-amber-700">{score.totalStars}</span>
         <AnimatePresence>
           {floatingStars.map(f => (
@@ -26,15 +26,15 @@ export default function ScoreBar({ score, floatingStars }) {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="flex items-center gap-1 bg-white/80 px-3 py-1.5 rounded-full shadow-sm"
+          className="flex items-center gap-1 bg-white/80 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-sm"
         >
-          <span className="text-lg">🔥</span>
+          <span className="text-sm sm:text-lg">🔥</span>
           <span className="text-orange-600">{score.streak}</span>
         </motion.div>
       )}
 
-      <div className="flex items-center gap-1 bg-white/80 px-3 py-1.5 rounded-full shadow-sm">
-        <span className="text-lg">✅</span>
+      <div className="flex items-center gap-1 bg-white/80 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-sm">
+        <span className="text-sm sm:text-lg">✅</span>
         <span className="text-green-700">{score.completed}</span>
       </div>
     </div>
