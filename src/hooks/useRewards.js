@@ -1,25 +1,25 @@
 const SUCCESS_MESSAGES = [
-  "Brilliant! 🌟",
-  "Well done! ⭐",
-  "Amazing work! 🎉",
-  "You nailed it! 💪",
-  "Fantastic! 🏆",
-  "Super job! 🚀",
-  "Wonderful! 🌈",
-  "Great thinking! 🧠",
-  "Perfect! ✨",
-  "You're a star! 💫",
-  "Keep it up! 🔥",
-  "Spot on! 🎯",
+  "Brilliant solving! 🌟",
+  "Well done, writer! ⭐",
+  "Amazing thinking! 🎉",
+  "You nailed that one! 💪",
+  "Fantastic focus! 🏆",
+  "Super smart move! 🚀",
+  "Wonderful effort! 🌈",
+  "Great clue-spotting! 🧠",
+  "Perfect pick! ✨",
+  "You are a star today! 💫",
+  "Keep that streak going! 🔥",
+  "Spot on answer! 🎯",
 ]
 
 const ENCOURAGE_MESSAGES = [
-  "Not quite — try again!",
-  "Almost! Have another go!",
-  "Keep trying — you've got this!",
-  "So close! Try another one!",
-  "Good effort — try again!",
-  "Nearly there! One more try!",
+  "Nice try! Read it again and test another choice.",
+  "Almost there! Look for a key clue and try again.",
+  "Good effort! Slow down and give it one more go.",
+  "So close! You are learning - pick your next best answer.",
+  "Keep going! Check the words carefully and try again.",
+  "Nearly there! One more thoughtful try will do it.",
 ]
 
 let successIdx = 0

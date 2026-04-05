@@ -37,7 +37,7 @@ export default function App() {
         score={score}
         floatingStars={floatingStars}
       >
-        <div className="space-y-4">
+        <div className="space-y-5 sm:space-y-6">
           {activities.includes('mystery-bag') && (
             <MysteryBag
               active={activeActivity === 'mystery-bag'}

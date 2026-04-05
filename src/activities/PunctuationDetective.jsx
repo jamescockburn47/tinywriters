@@ -47,6 +47,10 @@ export default function PunctuationDetective({ active, onSelect, award }) {
       icon="🔍"
       title="Punctuation Detective"
       description="Which punctuation mark does this sentence need?"
+      coach={{
+        steps: ['Read the sentence aloud', 'Pick the best punctuation', 'Check the explanation'],
+        tip: 'Question marks are for asking, exclamation marks show strong feeling, full stops end a statement.',
+      }}
       color="grammar"
       completed={completed}
       total={total}

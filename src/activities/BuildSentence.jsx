@@ -93,6 +93,10 @@ export default function BuildSentence({ active, onSelect, award }) {
       icon="🔨"
       title="Build a Sentence"
       description="Click the words in order to build a sentence! Watch for word types."
+      coach={{
+        steps: ['Tap words in order', 'Watch word types', 'Finish the full sentence'],
+        tip: 'If you are stuck, start with a likely sentence opener like a pronoun or determiner.',
+      }}
       color="grammar"
       completed={completed}
       total={total}

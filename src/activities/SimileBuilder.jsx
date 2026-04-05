@@ -69,6 +69,10 @@ export default function SimileBuilder({ active, onSelect, award }) {
       icon="🌟"
       title="Simile Builder"
       description="Complete the simile with the right word!"
+      coach={{
+        steps: ['Read the simile stem', 'Pick the best word', 'Check if it sounds natural aloud'],
+        tip: 'Great similes compare ideas that feel strongly connected.',
+      }}
       color="creative"
       completed={completed}
       total={total}

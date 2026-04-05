@@ -89,6 +89,10 @@ export default function AdjectiveOrder({ active, onSelect, award }) {
       icon="🎨"
       title="Adjective Order"
       description="Put the describing words in the right order!"
+      coach={{
+        steps: ['Choose the next adjective', 'Build the phrase left to right', 'Put all words before the noun'],
+        tip: 'Think OSASCOMP: Opinion, Size, Age, Shape, Color, Origin, Material, Purpose.',
+      }}
       color="grammar"
       completed={completed}
       total={total}

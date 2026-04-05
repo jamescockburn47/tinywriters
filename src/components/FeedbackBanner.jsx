@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function FeedbackBanner({ message, type }) {
   return (
-    <div className="min-h-[32px] flex items-center justify-center">
+    <div className="min-h-[32px] flex items-center justify-center" aria-live="polite" role="status">
       <AnimatePresence mode="wait">
         {message && (
           <motion.p

@@ -75,6 +75,10 @@ export default function StorySequencer({ active, onSelect, award }) {
       icon="📖"
       title="Story Sequencer"
       description="Put the story events in the right order!"
+      coach={{
+        steps: ['Pick the beginning event', 'Then choose the middle', 'Finish with the ending'],
+        tip: 'Look for clue words like first, then, after, finally.',
+      }}
       color="essay"
       completed={completed}
       total={total}

@@ -37,7 +37,10 @@
 
 body {
   font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--color-cream);
+  background:
+    radial-gradient(circle at 15% -10%, rgba(167, 139, 250, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 85% -20%, rgba(96, 165, 250, 0.18) 0%, transparent 38%),
+    var(--color-cream);
   min-height: 100vh;
   margin: 0;
 }
